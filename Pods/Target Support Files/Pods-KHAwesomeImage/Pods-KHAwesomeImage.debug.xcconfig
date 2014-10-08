@@ -1,0 +1,5 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/500px-iOS-api" "${PODS_ROOT}/Headers/Public/LBDelegateMatrioska"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/500px-iOS-api" -isystem "${PODS_ROOT}/Headers/Public/LBDelegateMatrioska"
+OTHER_LDFLAGS = -ObjC -l"Pods-KHAwesomeImage-500px-iOS-api" -l"Pods-KHAwesomeImage-LBDelegateMatrioska"
+PODS_ROOT = ${SRCROOT}/Pods
