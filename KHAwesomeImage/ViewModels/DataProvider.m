@@ -10,6 +10,7 @@
 #import "AWPagedArray.h"
 #import "DataLoadingOperation.h"
 #import "KHPopularImagesViewModel.h"
+#import "KHLoadingPopularOperation.h"
 
 const NSUInteger DataProviderDefaultPageSize = 20;
 const NSUInteger DataProviderDataCount = 200;
@@ -101,7 +102,7 @@ AWPagedArrayDelegate
 }
 - (NSOperation *)_loadingOperationForPage:(NSUInteger)page indexes:(NSIndexSet *)indexes {
     
-    DataLoadingOperation *operation = [[DataLoadingOperation alloc] initWithIndexes:indexes];
+    KHLoadingPopularOperation *operation = [[KHLoadingPopularOperation alloc] initWithIndexes:indexes];
     
     // Remember to not retain self in block since we store the operation
     __weak typeof(self) weakSelf = self;
@@ -127,7 +128,7 @@ AWPagedArrayDelegate
         [self _setShouldLoadDataForPage:preloadPage];
     }
 }
-- (void)_dataOperation:(DataLoadingOperation *)operation finishedLoadingForPage:(NSUInteger)page {
+- (void)_dataOperation:(NSBlockOperation<KHLoadingOperationProtocol> *)operation finishedLoadingForPage:(NSUInteger)page {
     
     [_dataLoadingOperations removeObjectForKey:@(page)];
     [_pagedArray setObjects:operation.dataPage forPage:page];

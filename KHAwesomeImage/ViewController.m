@@ -49,7 +49,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if([cell isKindOfClass:[KHLoadMoreTableViewCell class]]) {
         DataProvider *dataProvider = (DataProvider *)self.basicModel.sectionModel;
-        [dataProvider loadDataForIndex:0];
+        [dataProvider loadDataForIndex:1];
     }
 
 }
