@@ -1,13 +1,16 @@
 PODS:
   - 500px-iOS-api (1.0.5)
+  - AWPagedArray (0.2.0)
   - LBDelegateMatrioska (0.0.2)
 
 DEPENDENCIES:
   - 500px-iOS-api
+  - AWPagedArray
   - LBDelegateMatrioska
 
 SPEC CHECKSUMS:
   500px-iOS-api: f3d2933143178565d499977fb18f1730d6a33376
+  AWPagedArray: 2c02ef1c4be38174c40b8160492e4283352dc5b0
   LBDelegateMatrioska: 38a2f329b8420dc69164bdbba90d877dd03052a0
 
 COCOAPODS: 0.34.1

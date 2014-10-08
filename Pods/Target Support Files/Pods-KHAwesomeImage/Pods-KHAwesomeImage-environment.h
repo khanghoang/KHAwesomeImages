@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_500px_iOS_api 0
 #define COCOAPODS_VERSION_PATCH_500px_iOS_api 5
 
+// AWPagedArray
+#define COCOAPODS_POD_AVAILABLE_AWPagedArray
+#define COCOAPODS_VERSION_MAJOR_AWPagedArray 0
+#define COCOAPODS_VERSION_MINOR_AWPagedArray 2
+#define COCOAPODS_VERSION_PATCH_AWPagedArray 0
+
 // LBDelegateMatrioska
 #define COCOAPODS_POD_AVAILABLE_LBDelegateMatrioska
 #define COCOAPODS_VERSION_MAJOR_LBDelegateMatrioska 0
