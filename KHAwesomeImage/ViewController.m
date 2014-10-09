@@ -36,13 +36,6 @@
 	[dataProvider loadDataForIndex:0];
 	dataProvider.delegate = (id) self;
 
-	if ([self isViewLoaded]) {
-        dataProvider.shouldLoadAutomatically = YES;
-        dataProvider.automaticPreloadMargin = YES;
-
-		[self.tableView reloadData];
-	}
-
     BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] initWithModel:modelLoadMore];
     imageSection.sectionModel = dataProvider;
 
@@ -55,6 +48,13 @@
 
     self.chainDelegate = [[LBDelegateMatrioska alloc] initWithDelegates:@[self.tableController, self]];
     self.tableView.delegate = (id) self.chainDelegate;
+
+	if ([self isViewLoaded]) {
+        dataProvider.shouldLoadAutomatically = YES;
+        dataProvider.automaticPreloadMargin = YES;
+
+		[self.tableView reloadData];
+	}
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,14 +71,14 @@
 
 //    [self.tableView beginUpdates];
 //
-//    [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-//        BOOL visible = [[self.tableView visibleCells] containsObject:indexPath];
-//        if (visible) {
-//            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//        }
-//    }];
-//    
+    [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+        BOOL visible = [[self.tableView visibleCells] containsObject:indexPath];
+        if (visible) {
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }];
+//
 //    [self.tableView endUpdates];
 }
 
