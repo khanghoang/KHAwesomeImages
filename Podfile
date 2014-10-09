@@ -8,6 +8,7 @@ target "KHAwesomeImage" do
     pod "500px-iOS-api"
     pod "LBDelegateMatrioska"
     pod "AWPagedArray"
+    pod "AFNetworking"
 
 end
 

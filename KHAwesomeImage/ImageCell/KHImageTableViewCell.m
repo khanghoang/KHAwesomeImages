@@ -7,6 +7,7 @@
 //
 
 #import "KHImageTableViewCell.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface KHImageTableViewCell ()
 
@@ -22,11 +23,23 @@
 	[self.imgView setImage:nil];
 }
 
+- (void)prepareForReuse {
+    self.lblIndex.text = @"";
+    [self.imgView setImage:nil];
+}
+
 - (void)configWithData:(id)data {
 	if ([data isEqual:[NSNull null]]) {
 		return;
 	}
-	self.lblIndex.text = [data stringValue];
+
+	if ([data isKindOfClass:[NSNumber class]]) {
+		self.lblIndex.text = [data stringValue];
+		return;
+	}
+
+    NSString *strURL = [data[@"image_url"] firstObject];
+    [self.imgView setImageWithURL:[NSURL URLWithString:strURL]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

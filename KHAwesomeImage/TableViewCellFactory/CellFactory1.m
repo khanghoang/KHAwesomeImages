@@ -17,7 +17,7 @@
 	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadMoreSection class]]) {
 		return 40;
 	}
-	return 120;
+	return 320;
 }
 
 + (UITableViewCell <KHCellProtocol> *)cellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView model:(id <KHTableViewModel> )model {

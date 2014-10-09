@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqu-fe-Bpp">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bqu-fe-Bpp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHz-Jo-ey4">
@@ -28,7 +29,11 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Bqu-fe-Bpp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="5Nc-Xh-szz"/>
                     <constraint firstAttribute="centerX" secondItem="xHz-Jo-ey4" secondAttribute="centerX" constant="-0.5" id="888-n8-4Oh"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Bqu-fe-Bpp" secondAttribute="bottom" constant="-8" id="FEY-Ef-B7V"/>
+                    <constraint firstItem="Bqu-fe-Bpp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="O68-u9-iwY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Bqu-fe-Bpp" secondAttribute="trailing" constant="-8" id="bWg-zy-VmR"/>
                     <constraint firstAttribute="centerY" secondItem="xHz-Jo-ey4" secondAttribute="centerY" constant="-0.5" id="eNp-wb-3d1"/>
                 </constraints>
             </tableViewCellContentView>

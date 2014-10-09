@@ -36,7 +36,8 @@
 		            if (success) {
 		                [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:20 page:indexes.lastIndex / 20 completion: ^(NSDictionary *results, NSError *error) {
 		                    [indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
-		                        dataPage[idx] = [results[@"photos"] objectAtIndex:idx];
+                                id data = [results[@"photos"] objectAtIndex:idx%20];
+                                dataPage[idx%20] = data;
 							}];
 						}];
 					}

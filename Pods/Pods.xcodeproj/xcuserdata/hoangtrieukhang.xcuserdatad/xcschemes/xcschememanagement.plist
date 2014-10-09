@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-KHAwesomeImage-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-KHAwesomeImage-AWPagedArray.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>57D0A59FEE122473436BEA65</key>
+		<key>03B003D63F7FA2E33E8FC901</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5E1DFCEBEE8443A8E80993DC</key>
+		<key>15A7ABE169BAF5E87A73C019</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7F7A4CE8038DF64CCD4F5B19</key>
+		<key>24128E0D8E13E1D7930851C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B19D8F7EC7BC8DECA2AFD249</key>
+		<key>389C20B192E1DBAE378C7A28</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>66171043685BBCB04433BCFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
