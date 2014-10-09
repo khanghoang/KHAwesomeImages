@@ -32,8 +32,19 @@
     BasicTableViewModel *modelLoadMore = [[BasicTableViewModel alloc] init];
     modelLoadMore.sectionModel = [[KHLoadMoreSection alloc] init];
 
+	DataProvider *dataProvider =[[DataProvider alloc] initWithPageSize:20];
+	[dataProvider loadDataForIndex:0];
+	dataProvider.delegate = (id) self;
+
+	if ([self isViewLoaded]) {
+        dataProvider.shouldLoadAutomatically = YES;
+        dataProvider.automaticPreloadMargin = YES;
+
+		[self.tableView reloadData];
+	}
+
     BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] initWithModel:modelLoadMore];
-    imageSection.sectionModel = [[DataProvider alloc] initWithPageSize:20];
+    imageSection.sectionModel = dataProvider;
 
     self.basicModel = imageSection;
 
@@ -52,6 +63,23 @@
         [dataProvider loadDataForIndex:1];
     }
 
+}
+
+#pragma mark - Data controller delegate
+
+- (void)dataProvider:(DataProvider *)dataProvider didLoadDataAtIndexes:(NSIndexSet *)indexes {
+
+//    [self.tableView beginUpdates];
+//
+//    [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+//        BOOL visible = [[self.tableView visibleCells] containsObject:indexPath];
+//        if (visible) {
+//            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        }
+//    }];
+//    
+//    [self.tableView endUpdates];
 }
 
 @end
