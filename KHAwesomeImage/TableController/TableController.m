@@ -40,7 +40,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     id<KHTableViewSectionModel> sectionModel = [self.model sectionAtIndex:section];
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
     title.text = [sectionModel title];
     title.backgroundColor = [UIColor lightGrayColor];
     title.textAlignment = NSTextAlignmentCenter;

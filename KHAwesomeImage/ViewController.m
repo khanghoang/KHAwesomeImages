@@ -35,6 +35,8 @@
 	DataProvider *dataProvider = [[DataProvider alloc] initWithPageSize:20];
 	[dataProvider loadDataForIndex:0];
 	dataProvider.delegate = (id)self;
+    dataProvider.shouldLoadAutomatically = YES;
+    dataProvider.automaticPreloadMargin = 20;
 
 	BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] initWithModel:modelLoadMore];
 	imageSection.sectionModel = dataProvider;
@@ -50,30 +52,29 @@
 	self.tableView.delegate = (id)self.chainDelegate;
 
 	if ([self isViewLoaded]) {
-		dataProvider.shouldLoadAutomatically = YES;
-		dataProvider.automaticPreloadMargin = YES;
-
 		[self.tableView reloadData];
 	}
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-	DataProvider *dataProvider = (DataProvider *)self.basicModel.sectionModel;
-	[dataProvider loadDataForIndex:indexPath.row / 20];
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//	DataProvider *dataProvider = (DataProvider *)self.basicModel.sectionModel;
+//	if (indexPath.row % 20 == 0) {
+//        [dataProvider loadDataForIndex:indexPath.row];
+//	}
+//}
 
 #pragma mark - Data controller delegate
 
 - (void)dataProvider:(DataProvider *)dataProvider didLoadDataAtIndexes:(NSIndexSet *)indexes {
-    [self.tableView beginUpdates];
+	[self.tableView beginUpdates];
 	[indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
 	    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-	    BOOL visible = [[self.tableView visibleCells] containsObject:indexPath];
+	    BOOL visible = [[self.tableView indexPathsForVisibleRows] containsObject:indexPath];
 	    if (visible) {
 	        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 		}
 	}];
-    [self.tableView endUpdates];
+	[self.tableView endUpdates];
 }
 
 @end

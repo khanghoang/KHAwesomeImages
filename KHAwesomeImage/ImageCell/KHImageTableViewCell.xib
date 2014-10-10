@@ -14,32 +14,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OjU-HT-hLI">
+                        <rect key="frame" x="150" y="55" width="20" height="20"/>
+                    </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bqu-fe-Bpp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHz-Jo-ey4">
-                        <rect key="frame" x="54" y="43" width="213" height="44"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="44" id="Ky4-We-f4c"/>
-                            <constraint firstAttribute="width" constant="213" id="Zn8-dA-yc8"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Bqu-fe-Bpp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="5Nc-Xh-szz"/>
-                    <constraint firstAttribute="centerX" secondItem="xHz-Jo-ey4" secondAttribute="centerX" constant="-0.5" id="888-n8-4Oh"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Bqu-fe-Bpp" secondAttribute="bottom" constant="-8" id="FEY-Ef-B7V"/>
                     <constraint firstItem="Bqu-fe-Bpp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="O68-u9-iwY"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Bqu-fe-Bpp" secondAttribute="trailing" constant="-8" id="bWg-zy-VmR"/>
-                    <constraint firstAttribute="centerY" secondItem="xHz-Jo-ey4" secondAttribute="centerY" constant="-0.5" id="eNp-wb-3d1"/>
+                    <constraint firstAttribute="centerY" secondItem="OjU-HT-hLI" secondAttribute="centerY" constant="-0.5" id="dKj-0y-tqR"/>
+                    <constraint firstAttribute="centerX" secondItem="OjU-HT-hLI" secondAttribute="centerX" id="tJ8-zg-5RN"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgView" destination="Bqu-fe-Bpp" id="OEC-86-Oaw"/>
-                <outlet property="lblIndex" destination="xHz-Jo-ey4" id="KRp-qc-Ev1"/>
             </connections>
             <point key="canvasLocation" x="323" y="434"/>
         </tableViewCell>

@@ -30,7 +30,7 @@
 	    NSMutableArray *dataPage = [NSMutableArray arrayWithCapacity:20];
 	    [PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
 	        if (success) {
-	            [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:20 page:weakSelf.indexes.lastIndex / 20 completion: ^(NSDictionary *results, NSError *error) {
+	            [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:20 page:(weakSelf.indexes.lastIndex + 1) / 20 completion: ^(NSDictionary *results, NSError *error) {
 	                [weakSelf.indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
 	                    id data = [results[@"photos"] objectAtIndex:idx % 20];
 	                    dataPage[idx % 20] = data;
