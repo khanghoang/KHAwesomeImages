@@ -10,6 +10,10 @@
 #import "KHImageTableViewCell.h"
 #import "KHLoadMoreSection.h"
 #import "KHLoadMoreTableViewCell.h"
+#import "ContentLoadingPopularViewModel.h"
+#import "KHLoadingContentTableViewCell.h"
+#import "KHLoadingContentErrorTableViewCell.h"
+#import "KHLoadingContentErrorViewModel.h"
 
 @implementation CellFactory1
 
@@ -17,12 +21,30 @@
 	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadMoreSection class]]) {
 		return 40;
 	}
+
+	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[ContentLoadingPopularViewModel class]]) {
+		return [UIScreen mainScreen].bounds.size.height;
+	}
+
+	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadingContentErrorViewModel class]]) {
+		return [UIScreen mainScreen].bounds.size.height;
+	}
+
 	return 320;
 }
 
 + (UITableViewCell <KHCellProtocol> *)cellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView model:(id <KHTableViewModel> )model {
+
+	if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[ContentLoadingPopularViewModel class]]) {
+		return [self _getReusableCellWithClass:[KHLoadingContentTableViewCell class] tableView:tableView];
+	}
+
 	if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHLoadMoreSection class]]) {
 		return [self _getReusableCellWithClass:[KHLoadMoreTableViewCell class] tableView:tableView];
+	}
+
+	if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHLoadingContentErrorViewModel class]]) {
+		return [self _getReusableCellWithClass:[KHLoadingContentErrorTableViewCell class] tableView:tableView];
 	}
 
 	id data = [model itemAtIndexpath:indexPath];

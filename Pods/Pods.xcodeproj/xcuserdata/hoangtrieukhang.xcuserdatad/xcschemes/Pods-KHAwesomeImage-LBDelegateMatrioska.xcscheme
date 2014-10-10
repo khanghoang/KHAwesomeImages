@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15A7ABE169BAF5E87A73C019"
+               BlueprintIdentifier = "B7FB15D344022764DA7F8204"
                BuildableName = "libPods-KHAwesomeImage-LBDelegateMatrioska.a"
                BlueprintName = "Pods-KHAwesomeImage-LBDelegateMatrioska"
                ReferencedContainer = "container:Pods.xcodeproj">

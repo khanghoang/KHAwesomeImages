@@ -37,15 +37,15 @@
 //- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
 //    return 20;
 //}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    id<KHTableViewSectionModel> sectionModel = [self.model sectionAtIndex:section];
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
-    title.text = [sectionModel title];
-    title.backgroundColor = [UIColor lightGrayColor];
-    title.textAlignment = NSTextAlignmentCenter;
-    return title;
-}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    id<KHTableViewSectionModel> sectionModel = [self.model sectionAtIndex:section];
+//    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+//    title.text = [sectionModel title];
+//    title.backgroundColor = [UIColor lightGrayColor];
+//    title.textAlignment = NSTextAlignmentCenter;
+//    return title;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [CellFactory1 cellAtIndexPath:indexPath tableView:tableView model:self.model];

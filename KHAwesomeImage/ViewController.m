@@ -9,17 +9,21 @@
 #import "ViewController.h"
 #import "CellFactory1.h"
 #import "DataProvider.h"
+#import "ContentLoadingPopularViewModel.h"
+#import "KHLoadingContentErrorViewModel.h"
 
 @interface ViewController ()
+<
+    HandleContentLoadingProtocol
+>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) TableController *tableController;
 @property (strong, nonatomic) BasicTableViewModel *basicModel;
-
 @property (strong, nonatomic) LBDelegateMatrioska *chainDelegate;
-
 @property (strong, nonatomic) CellFactory1 *cellFactory;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -28,17 +32,20 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+	[self.tableView addSubview:self.refreshControl];
 
-    DataProvider *dataProvider = [[DataProvider alloc] init];
-	[dataProvider loadDataForIndex:0];
-	dataProvider.delegate = (id)self;
-    dataProvider.shouldLoadAutomatically = YES;
-    dataProvider.automaticPreloadMargin = 20;
+    [self onRefresh];
+}
 
-	BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] initWithModel:nil];
-	imageSection.sectionModel = dataProvider;
+- (void)onRefresh {
+	BasicTableViewModel *loadingContentSection = [[BasicTableViewModel alloc] initWithModel:nil];
+	ContentLoadingPopularViewModel *loadingContentViewModel = [[ContentLoadingPopularViewModel alloc] init];
+	loadingContentSection.sectionModel = loadingContentViewModel;
+	loadingContentViewModel.delegate = self;
 
-	self.basicModel = imageSection;
+	self.basicModel = loadingContentSection;
 
 	self.tableController = [[TableController alloc] init];
 	[self.tableController setModel:self.basicModel];
@@ -51,6 +58,9 @@
 	if ([self isViewLoaded]) {
 		[self.tableView reloadData];
 	}
+
+	[loadingContentViewModel loadContent];
+
 }
 
 #pragma mark - Data controller delegate
@@ -65,6 +75,39 @@
 		}
 	}];
 	[self.tableView endUpdates];
+}
+
+#pragma mark - handle error
+
+- (void)didLoadWithResultWithTotalPage:(NSInteger)totalItems error:(NSError *)error operation:(AFHTTPRequestOperation *)operation {
+
+	if (error) {
+		BasicTableViewModel *loadingContentErrorSection = [[BasicTableViewModel alloc] initWithModel:nil];
+		KHLoadingContentErrorViewModel *loadingContentErrorViewModel = [[KHLoadingContentErrorViewModel alloc] init];
+		loadingContentErrorSection.sectionModel = loadingContentErrorViewModel;
+
+		self.basicModel = loadingContentErrorSection;
+		[self.tableController setModel:self.basicModel];
+
+		[self.tableView reloadData];
+
+		return;
+	}
+
+	DataProvider *dataProvider = [[DataProvider alloc] init];
+	[dataProvider loadDataForIndex:0];
+	dataProvider.delegate = (id)self;
+	dataProvider.shouldLoadAutomatically = YES;
+	dataProvider.automaticPreloadMargin = 20;
+
+	BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] init];
+	imageSection.sectionModel = dataProvider;
+
+	self.basicModel = imageSection;
+
+	[self.tableController setModel:self.basicModel];
+
+	[self.tableView reloadData];
 }
 
 @end
