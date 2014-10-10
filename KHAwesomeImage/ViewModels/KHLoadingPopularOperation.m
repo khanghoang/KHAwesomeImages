@@ -10,9 +10,6 @@
 
 @interface KHLoadingPopularOperation ()
 
-@property (nonatomic, readonly) NSIndexSet *indexes;
-@property (nonatomic, readonly) NSArray *dataPage;
-
 @end
 
 @implementation KHLoadingPopularOperation
@@ -22,33 +19,32 @@
 
 	if (self) {
 		_indexes = indexes;
-
-		typeof(self) weakSelf = self;
-		[self addExecutionBlock: ^{
-		    // Generate data
-		    NSMutableArray *dataPage = [NSMutableArray arrayWithCapacity:20];
-            [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-                [dataPage addObject:@(idx+1)];
-            }];
-		    weakSelf->_dataPage = dataPage;
-		    dispatch_sync(dispatch_get_main_queue(), ^{
-		        [PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
-		            if (success) {
-		                [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:20 page:indexes.lastIndex / 20 completion: ^(NSDictionary *results, NSError *error) {
-		                    [indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
-                                id data = [results[@"photos"] objectAtIndex:idx%20];
-                                dataPage[idx%20] = data;
-							}];
-						}];
-					}
-		            else {
-					}
-				}];
-			});
-		}];
 	}
 
 	return self;
+}
+
+- (void)loadData:(void (^)(NSArray *data))finishBlock {
+	typeof(self) weakSelf = self;
+	[self addExecutionBlock: ^{
+	    NSMutableArray *dataPage = [NSMutableArray arrayWithCapacity:20];
+	    [PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
+	        if (success) {
+	            [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:20 page:weakSelf.indexes.lastIndex / 20 completion: ^(NSDictionary *results, NSError *error) {
+	                [weakSelf.indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
+	                    id data = [results[@"photos"] objectAtIndex:idx % 20];
+	                    dataPage[idx % 20] = data;
+					}];
+	                weakSelf->_dataPage = dataPage;
+	                if (finishBlock) {
+	                    finishBlock(dataPage);
+					}
+				}];
+			}
+	        else {
+			}
+		}];
+	}];
 }
 
 @end

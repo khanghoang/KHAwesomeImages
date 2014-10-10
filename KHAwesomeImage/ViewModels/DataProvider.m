@@ -103,17 +103,14 @@ AWPagedArrayDelegate
 - (NSOperation *)_loadingOperationForPage:(NSUInteger)page indexes:(NSIndexSet *)indexes {
     
     KHLoadingPopularOperation *operation = [[KHLoadingPopularOperation alloc] initWithIndexes:indexes];
-//    DataLoadingOperation *operation = [[DataLoadingOperation alloc] initWithIndexes:indexes];
-
     // Remember to not retain self in block since we store the operation
     __weak typeof(self) weakSelf = self;
-    __weak typeof(operation) weakOperation = operation;
-    operation.completionBlock = ^{
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [weakSelf _dataOperation:weakOperation finishedLoadingForPage:page];
+    [operation loadData: ^(NSArray *data) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
+            [weakSelf _dataOperation:operation finishedLoadingForPage:page];
         }];
-    };
-
+    }];
+    
     return operation;
 }
 - (void)_preloadNextPageIfNeededForIndex:(NSUInteger)index {

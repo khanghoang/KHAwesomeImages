@@ -13,4 +13,10 @@
     KHLoadingOperationProtocol
 >
 
+- (instancetype)initWithIndexes:(NSIndexSet *)indexes;
+- (void)loadData:(void (^)(NSArray *data))finishBlock;
+
+@property (nonatomic, readonly) NSIndexSet *indexes;
+@property (nonatomic, readonly) NSArray *dataPage;
+
 @end

@@ -65,13 +65,15 @@
 #pragma mark - Data controller delegate
 
 - (void)dataProvider:(DataProvider *)dataProvider didLoadDataAtIndexes:(NSIndexSet *)indexes {
+    [self.tableView beginUpdates];
 	[indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
 	    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
 	    BOOL visible = [[self.tableView visibleCells] containsObject:indexPath];
-//        if (visible) {
-	    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//        }
+	    if (visible) {
+	        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+		}
 	}];
+    [self.tableView endUpdates];
 }
 
 @end
