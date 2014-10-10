@@ -34,9 +34,9 @@
     return [CellFactory1 heightForItemAtIndexpath:indexPath model:self.model];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-    return 20;
-}
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
+//    return 20;
+//}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     id<KHTableViewSectionModel> sectionModel = [self.model sectionAtIndex:section];

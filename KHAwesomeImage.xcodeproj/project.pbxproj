@@ -29,6 +29,8 @@
 		B45D6F6219E50F0900BDB1F8 /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B45D6F5119E50F0900BDB1F8 /* DataProvider.m */; };
 		B45D6F6319E50F0900BDB1F8 /* KHLoadingPopularOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B45D6F5419E50F0900BDB1F8 /* KHLoadingPopularOperation.m */; };
 		B45D6F6419E50F0900BDB1F8 /* KHPopularImagesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B45D6F5619E50F0900BDB1F8 /* KHPopularImagesViewModel.m */; };
+		B4BB5E9219E7949800910164 /* KHLoadingContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BB5E9019E7949800910164 /* KHLoadingContentTableViewCell.m */; };
+		B4BB5E9319E7949800910164 /* KHLoadingContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BB5E9119E7949800910164 /* KHLoadingContentTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,9 @@
 		B45D6F5419E50F0900BDB1F8 /* KHLoadingPopularOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoadingPopularOperation.m; sourceTree = "<group>"; };
 		B45D6F5519E50F0900BDB1F8 /* KHPopularImagesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPopularImagesViewModel.h; sourceTree = "<group>"; };
 		B45D6F5619E50F0900BDB1F8 /* KHPopularImagesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPopularImagesViewModel.m; sourceTree = "<group>"; };
+		B4BB5E8F19E7949800910164 /* KHLoadingContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoadingContentTableViewCell.h; sourceTree = "<group>"; };
+		B4BB5E9019E7949800910164 /* KHLoadingContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoadingContentTableViewCell.m; sourceTree = "<group>"; };
+		B4BB5E9119E7949800910164 /* KHLoadingContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHLoadingContentTableViewCell.xib; sourceTree = "<group>"; };
 		F5E48A6AFBE17A3223C17F08 /* Pods-KHAwesomeImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KHAwesomeImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KHAwesomeImage/Pods-KHAwesomeImage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				B45D6F2F19E50F0900BDB1F8 /* ImageCell */,
+				B4BB5E8F19E7949800910164 /* KHLoadingContentTableViewCell.h */,
+				B4BB5E9019E7949800910164 /* KHLoadingContentTableViewCell.m */,
+				B4BB5E9119E7949800910164 /* KHLoadingContentTableViewCell.xib */,
 				B45D6F3319E50F0900BDB1F8 /* KHLoadMoreTableViewCell.h */,
 				B45D6F3419E50F0900BDB1F8 /* KHLoadMoreTableViewCell.m */,
 				B45D6F3519E50F0900BDB1F8 /* KHLoadMoreTableViewCell.xib */,
@@ -371,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45D6F0919E501E900BDB1F8 /* Main.storyboard in Resources */,
+				B4BB5E9319E7949800910164 /* KHLoadingContentTableViewCell.xib in Resources */,
 				B45D6F0E19E501E900BDB1F8 /* LaunchScreen.xib in Resources */,
 				B45D6F5819E50F0900BDB1F8 /* KHImageTableViewCell.xib in Resources */,
 				B45D6F5A19E50F0900BDB1F8 /* KHLoadMoreTableViewCell.xib in Resources */,
@@ -434,6 +443,7 @@
 				B45D6F5C19E50F0900BDB1F8 /* CellFactory1.m in Sources */,
 				B45D6F0319E501E900BDB1F8 /* AppDelegate.m in Sources */,
 				B45D6F6119E50F0900BDB1F8 /* DataLoadingOperation.m in Sources */,
+				B4BB5E9219E7949800910164 /* KHLoadingContentTableViewCell.m in Sources */,
 				B45D6F5919E50F0900BDB1F8 /* KHLoadMoreTableViewCell.m in Sources */,
 				B45D6F6319E50F0900BDB1F8 /* KHLoadingPopularOperation.m in Sources */,
 				B45D6F5F19E50F0900BDB1F8 /* KHImageSectionModel.m in Sources */,

@@ -29,16 +29,13 @@
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-	BasicTableViewModel *modelLoadMore = [[BasicTableViewModel alloc] init];
-	modelLoadMore.sectionModel = [[KHLoadMoreSection alloc] init];
-
-	DataProvider *dataProvider = [[DataProvider alloc] initWithPageSize:20];
+    DataProvider *dataProvider = [[DataProvider alloc] init];
 	[dataProvider loadDataForIndex:0];
 	dataProvider.delegate = (id)self;
     dataProvider.shouldLoadAutomatically = YES;
     dataProvider.automaticPreloadMargin = 20;
 
-	BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] initWithModel:modelLoadMore];
+	BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] initWithModel:nil];
 	imageSection.sectionModel = dataProvider;
 
 	self.basicModel = imageSection;
@@ -55,13 +52,6 @@
 		[self.tableView reloadData];
 	}
 }
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//	DataProvider *dataProvider = (DataProvider *)self.basicModel.sectionModel;
-//	if (indexPath.row % 20 == 0) {
-//        [dataProvider loadDataForIndex:indexPath.row];
-//	}
-//}
 
 #pragma mark - Data controller delegate
 
