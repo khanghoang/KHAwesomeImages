@@ -32,20 +32,9 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+	self.refreshControl = [[UIRefreshControl alloc] init];
+	[self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
 	[self.tableView addSubview:self.refreshControl];
-
-    [self onRefresh];
-}
-
-- (void)onRefresh {
-	BasicTableViewModel *loadingContentSection = [[BasicTableViewModel alloc] initWithModel:nil];
-	ContentLoadingPopularViewModel *loadingContentViewModel = [[ContentLoadingPopularViewModel alloc] init];
-	loadingContentSection.sectionModel = loadingContentViewModel;
-	loadingContentViewModel.delegate = self;
-
-	self.basicModel = loadingContentSection;
 
 	self.tableController = [[TableController alloc] init];
 	[self.tableController setModel:self.basicModel];
@@ -55,12 +44,20 @@
 	self.chainDelegate = [[LBDelegateMatrioska alloc] initWithDelegates:@[self.tableController, self]];
 	self.tableView.delegate = (id)self.chainDelegate;
 
-	if ([self isViewLoaded]) {
-		[self.tableView reloadData];
-	}
+	[self onRefresh];
+}
+
+- (void)onRefresh {
+    BasicTableViewModel *loadingContentSection = [[BasicTableViewModel alloc] init];
+	ContentLoadingPopularViewModel *loadingContentViewModel = [[ContentLoadingPopularViewModel alloc] init];
+	loadingContentSection.sectionModel = loadingContentViewModel;
+	loadingContentViewModel.delegate = self;
+
+	self.basicModel = loadingContentSection;
+
+	[self.tableView reloadData];
 
 	[loadingContentViewModel loadContent];
-
 }
 
 #pragma mark - Data controller delegate
@@ -80,6 +77,8 @@
 #pragma mark - handle error
 
 - (void)didLoadWithResultWithTotalPage:(NSInteger)totalItems error:(NSError *)error operation:(AFHTTPRequestOperation *)operation {
+
+    [self.refreshControl endRefreshing];
 
 	if (error) {
 		BasicTableViewModel *loadingContentErrorSection = [[BasicTableViewModel alloc] initWithModel:nil];
