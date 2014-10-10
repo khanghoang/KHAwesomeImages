@@ -37,7 +37,6 @@
 	[self.tableView addSubview:self.refreshControl];
 
 	self.tableController = [[TableController alloc] init];
-	[self.tableController setModel:self.basicModel];
 
 	self.tableView.dataSource = self.tableController;
 
@@ -54,6 +53,7 @@
 	loadingContentViewModel.delegate = self;
 
 	self.basicModel = loadingContentSection;
+    self.tableController.model = self.basicModel;
 
 	[self.tableView reloadData];
 
