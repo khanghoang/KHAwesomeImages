@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "KHTableViewModel.h"
+#import "KHTableViewCellFactoryProtocol.h"
 
 @interface TableController : NSObject
 <
@@ -17,5 +18,6 @@ UITableViewDelegate
 >
 
 @property (strong, nonatomic) id<KHTableViewModel> model;
+@property (strong, nonatomic) id<KHTableViewCellFactoryProtocol> factory;
 
 @end

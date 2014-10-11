@@ -12,6 +12,7 @@
 #import "ContentLoadingPopularViewModel.h"
 #import "KHLoadingContentErrorViewModel.h"
 #import "KHLoadingPopularOperation.h"
+#import "CellFactory1.h"
 
 @interface ViewController ()
 <
@@ -40,6 +41,7 @@
 	self.tableController = [[TableController alloc] init];
 
 	self.tableView.dataSource = self.tableController;
+    self.tableController.factory = [[CellFactory1 alloc] init];
 
 	self.chainDelegate = [[LBDelegateMatrioska alloc] initWithDelegates:@[self.tableController, self]];
 	self.tableView.delegate = (id)self.chainDelegate;

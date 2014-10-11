@@ -17,7 +17,7 @@
 
 @implementation CellFactory1
 
-+ (CGFloat)heightForItemAtIndexpath:(NSIndexPath *)indexpaht model:(id <KHTableViewModel> )model {
+- (CGFloat)heightForItemAtIndexpath:(NSIndexPath *)indexpaht model:(id <KHTableViewModel> )model {
 	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadMoreSection class]]) {
 		return 40;
 	}
@@ -33,7 +33,7 @@
 	return 320;
 }
 
-+ (UITableViewCell <KHCellProtocol> *)cellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView model:(id <KHTableViewModel> )model {
+- (UITableViewCell <KHCellProtocol> *)cellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView model:(id <KHTableViewModel> )model {
 
 	if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[ContentLoadingPopularViewModel class]]) {
 		return [self _getReusableCellWithClass:[KHLoadingContentTableViewCell class] tableView:tableView];
@@ -56,17 +56,17 @@
 
 #pragma mark - Private methods
 
-+ (UITableViewCell <KHCellProtocol> *)_getReusableCellWithClass:(Class)cellClass tableView:(UITableView *)tableView {
+- (UITableViewCell <KHCellProtocol> *)_getReusableCellWithClass:(Class)cellClass tableView:(UITableView *)tableView {
 	[self _registerTheClass:cellClass toTableView:tableView];
 	return [self _dequeueReuseableCellWithClass:cellClass ofTableView:tableView];
 }
 
-+ (void)_registerTheClass:(Class)cellClass toTableView:(UITableView *)tableView {
+- (void)_registerTheClass:(Class)cellClass toTableView:(UITableView *)tableView {
 	UINib *cellNib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
 	[tableView registerNib:cellNib forCellReuseIdentifier:NSStringFromClass(cellClass)];
 }
 
-+ (UITableViewCell <KHCellProtocol> *)_dequeueReuseableCellWithClass:(Class)cellClass ofTableView:(UITableView *)tableView {
+- (UITableViewCell <KHCellProtocol> *)_dequeueReuseableCellWithClass:(Class)cellClass ofTableView:(UITableView *)tableView {
 	UITableViewCell <KHCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(cellClass)];
 	return cell;
 }
