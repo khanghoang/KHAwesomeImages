@@ -10,7 +10,10 @@
 
 @protocol KHTableViewSectionModel <NSObject>
 
+@optional
 - (NSString *)title;
+
+@required
 - (id)objectAtIndex:(NSUInteger)index;
 - (NSUInteger)count;
 
