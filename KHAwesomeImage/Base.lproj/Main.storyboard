@@ -36,7 +36,17 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="RNQ-pd-uLq"/>
+                    <navigationItem key="navigationItem" id="RNQ-pd-uLq">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="EBE-sb-2cF">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Popular"/>
+                                <segment title="Fresh Today"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="y5h-4X-RNF" id="iJ9-xL-SLS"/>
                     </connections>
