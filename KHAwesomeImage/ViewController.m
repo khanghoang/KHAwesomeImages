@@ -11,6 +11,7 @@
 #import "DataProvider.h"
 #import "ContentLoadingPopularViewModel.h"
 #import "KHLoadingContentErrorViewModel.h"
+#import "KHLoadingPopularOperation.h"
 
 @interface ViewController ()
 <
@@ -94,7 +95,6 @@
 	}
 
 	DataProvider *dataProvider = [[DataProvider alloc] init];
-	[dataProvider loadDataForIndex:0];
 	dataProvider.delegate = (id)self;
 	dataProvider.shouldLoadAutomatically = YES;
 	dataProvider.automaticPreloadMargin = 20;
@@ -106,7 +106,13 @@
 
 	[self.tableController setModel:self.basicModel];
 
+	[dataProvider loadDataForIndex:0];
 	[self.tableView reloadData];
+}
+
+- (id<KHLoadingOperationProtocol>)loadingOperationForSectionViewModel:(id<KHTableViewSectionModel>)viewModel indexes:(NSIndexSet *)indexes {
+    KHLoadingPopularOperation *operation = [[KHLoadingPopularOperation alloc] initWithIndexes:indexes];
+    return operation;
 }
 
 @end

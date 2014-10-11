@@ -60,6 +60,7 @@ AWPagedArrayDelegate
     return (NSArray *)_pagedArray;
 }
 
+#pragma mark - KHTableViewSectionModel
 - (id)objectAtIndex:(NSUInteger)index {
     return [_pagedArray objectAtIndex:index];
 }
@@ -102,7 +103,7 @@ AWPagedArrayDelegate
 }
 - (NSOperation *)_loadingOperationForPage:(NSUInteger)page indexes:(NSIndexSet *)indexes {
     
-    KHLoadingPopularOperation *operation = [[KHLoadingPopularOperation alloc] initWithIndexes:indexes];
+    id<KHLoadingOperationProtocol> operation = [self.delegate loadingOperationForSectionViewModel:self indexes:indexes];
     // Remember to not retain self in block since we store the operation
     __weak typeof(self) weakSelf = self;
     [operation loadData: ^(NSArray *data) {
