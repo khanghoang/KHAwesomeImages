@@ -7,15 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HandleContentLoadingProtocol.h"
-#import "ContentLoadingProtocol.h"
 
 @interface ContentLoadingPopularViewModel : NSObject
 <
 ContentLoadingProtocol,
 KHTableViewSectionModel
 >
-
-@property (nonatomic, weak) id<HandleContentLoadingProtocol> delegate;
 
 @end

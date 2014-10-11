@@ -8,11 +8,9 @@
 
 #import "ViewController.h"
 #import "CellFactory1.h"
-#import "DataProvider.h"
 #import "ContentLoadingPopularViewModel.h"
 #import "KHLoadingContentErrorViewModel.h"
 #import "KHLoadingPopularOperation.h"
-#import "CellFactory1.h"
 
 @interface ViewController ()
 <

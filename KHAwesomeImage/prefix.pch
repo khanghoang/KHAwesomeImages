@@ -17,6 +17,7 @@
 #import "KHImageSectionModel.h"
 #import "KHBasicSectionModel.h"
 #import "KHLoadingOperationProtocol.h"
+#import "DataProvider.h"
 
 #import "KHTableViewCellFactoryProtocol.h"
 #import "KHTableViewModel.h"
@@ -28,3 +29,6 @@
 #import "LBDelegateMatrioska.h"
 #import <500px-iOS-api/PXRequest.h>
 #import <AWPagedArray/AWPagedArray.h>
+
+#import "HandleContentLoadingProtocol.h"
+#import "ContentLoadingProtocol.h"

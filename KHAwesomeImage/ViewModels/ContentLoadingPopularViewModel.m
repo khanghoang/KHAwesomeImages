@@ -8,7 +8,13 @@
 
 #import "ContentLoadingPopularViewModel.h"
 
+@interface ContentLoadingPopularViewModel()
+
+@end
+
 @implementation ContentLoadingPopularViewModel
+
+@synthesize delegate;
 
 - (void)loadContent:(void (^)(NSInteger totalItems, NSError *error, AFHTTPRequestOperation *operation))completeBlock {
 	[PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
