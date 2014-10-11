@@ -8,7 +8,14 @@
 
 #import "KHMainViewController.h"
 
+typedef NS_ENUM(NSUInteger, kMainViewControllerSegmentValue) {
+    kMainViewControllerSegmentValuePopular = 0,
+    kMainViewControllerSegmentValueFreshToday = 1
+};
+
 @interface KHMainViewController ()
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentType;
 
 @end
 
@@ -17,21 +24,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self onSegment:self.segmentType];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)onSegment:(UISegmentedControl *)segment {
+    [self changeChildViewControllerWithType:segment.selectedSegmentIndex];
 }
 
-/*
-#pragma mark - Navigation
+- (void)changeChildViewControllerWithType:(kMainViewControllerSegmentValue)type {
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 @end

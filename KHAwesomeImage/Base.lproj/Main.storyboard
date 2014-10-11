@@ -26,8 +26,14 @@
                                 <segment title="Popular"/>
                                 <segment title="Fresh Today"/>
                             </segments>
+                            <connections>
+                                <action selector="onSegment:" destination="vXZ-lx-hvc" eventType="valueChanged" id="KGx-En-QTN"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segmentType" destination="EBE-sb-2cF" id="agJ-fq-nao"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
