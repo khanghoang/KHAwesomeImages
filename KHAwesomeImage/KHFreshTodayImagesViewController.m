@@ -11,6 +11,9 @@
 @interface KHFreshTodayImagesViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) TableController *tableController;
+@property (strong, nonatomic) LBDelegateMatrioska *chainDelegate;
+@property (strong, nonatomic) NSObject *cellFactory;
 
 @end
 
