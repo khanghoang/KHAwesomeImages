@@ -29,24 +29,22 @@
 
 - (void)loadData:(void (^)(NSArray *data))finishBlock {
 	typeof(self) weakSelf = self;
-	[self addExecutionBlock: ^{
-	    NSMutableArray *dataPage = [NSMutableArray arrayWithCapacity:20];
-	    [PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
-	        if (success) {
-	            [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:20 page:(weakSelf.indexes.lastIndex + 1) / 20 completion: ^(NSDictionary *results, NSError *error) {
-	                [weakSelf.indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
-	                    id data = [results[@"photos"] objectAtIndex:idx % 20];
-	                    dataPage[idx % 20] = data;
-					}];
-	                weakSelf->_dataPage = dataPage;
-	                if (finishBlock) {
-	                    finishBlock(dataPage);
-					}
+	NSMutableArray *dataPage = [NSMutableArray arrayWithCapacity:20];
+	[PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
+	    if (success) {
+	        [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:20 page:(weakSelf.indexes.lastIndex + 1) / 20 completion: ^(NSDictionary *results, NSError *error) {
+	            [weakSelf.indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
+	                id data = [results[@"photos"] objectAtIndex:idx % 20];
+	                dataPage[idx % 20] = data;
 				}];
-			}
-	        else {
-			}
-		}];
+	            weakSelf->_dataPage = dataPage;
+	            if (finishBlock) {
+	                finishBlock(dataPage);
+				}
+			}];
+		}
+	    else {
+		}
 	}];
 }
 

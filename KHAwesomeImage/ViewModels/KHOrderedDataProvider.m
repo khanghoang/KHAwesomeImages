@@ -13,6 +13,7 @@
 @property (assign, nonatomic) NSInteger currentPage;
 @property (assign, nonatomic) BOOL isLoadingNextPage;
 @property (assign, nonatomic) BOOL isReachMaxPage;
+@property (strong, nonatomic) NSBlockOperation *loadingOperation;
 @property (strong, nonatomic) NSMutableArray *arrItems;
 
 @end
@@ -22,9 +23,10 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _currentPage = 0;
+        _currentPage = -1;
         _isReachMaxPage = NO;
         _isLoadingNextPage = NO;
+        _arrItems = [NSMutableArray array];
     }
 
     return self;
@@ -40,7 +42,18 @@
     if (index == self.arrItems.count-1) {
         [self _setShouldLoadDataForNextPage];
     }
+
     return [self.arrItems objectAtIndex:index];
+}
+
+#pragma mark - Public method
+
+- (void)startLoading {
+    self.currentPage = -1;
+    self.isReachMaxPage = NO;
+    self.isLoadingNextPage = NO;
+    self.arrItems = [NSMutableArray array];
+    [self _setShouldLoadDataForNextPage];
 }
 
 #pragma mark - Private methods
@@ -63,6 +76,7 @@
     self.isLoadingNextPage = YES;
 
     id<KHLoadingOperationProtocol> loadingOperation = [self.delegate loadingOperationForSectionViewModel:self forPage:self.currentPage+1];
+    self.loadingOperation = loadingOperation;
     __weak typeof(self) weakSelf = self;
     [loadingOperation loadData: ^(NSArray *data) {
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{

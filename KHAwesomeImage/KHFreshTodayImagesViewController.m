@@ -10,10 +10,11 @@
 #import "KHContentLoadingFreshTodayViewModel.h"
 #import "KHLoadingFreshTodayOperation.h"
 #import "KHFreshTodayCellFactory.h"
+#import "KHOrderedDataProvider.h"
 
 @interface KHFreshTodayImagesViewController ()
 <
-    DataProviderDelegate,
+    KHOrderedDataProtocol,
     HandleContentLoadingProtocol
 >
 
@@ -51,37 +52,31 @@
 	[loadingContentViewModel loadContent];
 }
 
-- (void)dataProvider:(DataProvider *)dataProvider didLoadDataAtIndexes:(NSIndexSet *)indexes {
-	[self.tableView beginUpdates];
-	[indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
-	    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-	    BOOL visible = [[self.tableView indexPathsForVisibleRows] containsObject:indexPath];
-	    if (visible) {
-	        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-		}
-	}];
-	[self.tableView endUpdates];
+- (void)dataProvider:(KHOrderedDataProvider *)dataProvider didLoadDataAtPage:(NSUInteger)page withItems:(NSArray *)items error:(NSError *)error {
+    [self.tableView reloadData];
 }
 
 - (void)didLoadWithResultWithTotalPage:(NSInteger)totalItems error:(NSError *)error operation:(AFHTTPRequestOperation *)operation {
-	DataProvider *dataProvider = [[DataProvider alloc] init];
-	dataProvider.delegate = (id)self;
-	dataProvider.shouldLoadAutomatically = YES;
-	dataProvider.automaticPreloadMargin = 20;
 
-	BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] init];
+    KHOrderedDataProvider *dataProvider = [[KHOrderedDataProvider alloc] init];
+	dataProvider.delegate = (id)self;
+
+	BasicTableViewModel *loadingMoreSection = [[BasicTableViewModel alloc] init];
+	loadingMoreSection.sectionModel = [[KHLoadMoreSection alloc] init];
+
+	BasicTableViewModel *imageSection = [[BasicTableViewModel alloc] initWithModel:loadingMoreSection];
 	imageSection.sectionModel = dataProvider;
 
 	self.basicModel = imageSection;
 
 	[self.tableController setModel:self.basicModel];
 
-	[dataProvider loadDataForIndex:0];
+    [dataProvider startLoading];
 	[self.tableView reloadData];
 }
 
-- (id <KHLoadingOperationProtocol> )loadingOperationForSectionViewModel:(id <KHTableViewSectionModel> )viewModel indexes:(NSIndexSet *)indexes {
-    return [[KHLoadingFreshTodayOperation alloc] initWithIndexes:indexes];
+- (id<KHLoadingOperationProtocol>)loadingOperationForSectionViewModel:(id<KHTableViewSectionModel>)viewModel forPage:(NSUInteger)page {
+    return [[KHLoadingFreshTodayOperation alloc] initWithPage:page];
 }
 
 @end

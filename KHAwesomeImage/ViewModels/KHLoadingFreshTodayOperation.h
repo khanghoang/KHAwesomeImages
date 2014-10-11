@@ -13,4 +13,6 @@
     KHLoadingOperationProtocol
 >
 
+- (instancetype)initWithPage:(NSUInteger)page;
+
 @end

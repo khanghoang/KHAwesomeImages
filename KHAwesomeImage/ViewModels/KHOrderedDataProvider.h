@@ -25,6 +25,7 @@
     KHTableViewSectionModel
 >
 
+- (void)startLoading;
 @property (nonatomic, weak) id<KHOrderedDataProtocol> delegate;
 
 @end

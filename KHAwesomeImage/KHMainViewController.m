@@ -48,7 +48,7 @@ typedef NS_ENUM (NSUInteger, kMainViewControllerSegmentValue) {
 
 - (UIViewController *)freshTodayVC {
 	if (!_freshTodayVC) {
-		ViewController *vc = [[UIStoryboard storyboardWithName:@"FreshToday" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([KHFreshTodayImagesViewController class])];
+		KHFreshTodayImagesViewController *vc = [[UIStoryboard storyboardWithName:@"FreshToday" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([KHFreshTodayImagesViewController class])];
 		_freshTodayVC = vc;
 	}
 

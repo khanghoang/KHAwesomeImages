@@ -31,7 +31,7 @@
 - (void)loadContent:(void (^)(NSInteger, NSError *, AFHTTPRequestOperation *))completeBlock {
 	[PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
 	    if (success) {
-	        [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeatureFreshToday resultsPerPage:20 page:1 completion: ^(NSDictionary *results, NSError *error) {
+	        [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeatureFreshToday resultsPerPage:20 page:0 completion: ^(NSDictionary *results, NSError *error) {
 	            if (completeBlock) {
 	                completeBlock(1000, error, nil);
 				}

@@ -8,9 +8,10 @@
 
 #import "KHLoadingFreshTodayOperation.h"
 
-@interface KHLoadingFreshTodayOperation()
+@interface KHLoadingFreshTodayOperation ()
 
 @property (strong, nonatomic) NSIndexSet *indexes;
+@property (assign, nonatomic) NSUInteger page;
 @property (strong, nonatomic) NSArray *dataPage;
 
 @end
@@ -27,26 +28,29 @@
 	return self;
 }
 
+- (instancetype)initWithPage:(NSUInteger)page {
+	self = [super init];
+
+	if (self) {
+		_page = page;
+	}
+
+	return self;
+}
+
 - (void)loadData:(void (^)(NSArray *))finishBlock {
 	typeof(self) weakSelf = self;
-	[self addExecutionBlock: ^{
-	    NSMutableArray *dataPage = [NSMutableArray arrayWithCapacity:20];
-	    [PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
-	        if (success) {
-	            [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeatureFreshWeek resultsPerPage:20 page:(weakSelf.indexes.lastIndex + 1) / 20 completion: ^(NSDictionary *results, NSError *error) {
-	                [weakSelf.indexes enumerateIndexesUsingBlock: ^(NSUInteger idx, BOOL *stop) {
-	                    id data = [results[@"photos"] objectAtIndex:idx % 20];
-	                    dataPage[idx % 20] = data;
-					}];
-	                weakSelf.dataPage = dataPage;
-	                if (finishBlock) {
-	                    finishBlock(dataPage);
-					}
-				}];
-			}
-	        else {
-			}
-		}];
+	[PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
+	    if (success) {
+	        [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeatureFreshWeek resultsPerPage:20 page:weakSelf.page completion: ^(NSDictionary *results, NSError *error) {
+	            weakSelf.dataPage = results[@"photos"];
+	            if (finishBlock) {
+	                finishBlock(weakSelf.dataPage);
+				}
+			}];
+		}
+	    else {
+		}
 	}];
 }
 
