@@ -1,5 +1,5 @@
 //
-//  KHContentLoadingFreshTodayViewModel.h
+//  KHFreshTodayCellFactory.h
 //  KHAwesomeImage
 //
 //  Created by Triệu Khang on 11/10/14.
@@ -8,12 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KHContentLoadingFreshTodayViewModel : NSObject
+@interface KHFreshTodayCellFactory : NSObject
 <
-    ContentLoadingProtocol,
-    KHTableViewSectionModel
+KHTableViewCellFactoryProtocol
 >
-
-
 
 @end

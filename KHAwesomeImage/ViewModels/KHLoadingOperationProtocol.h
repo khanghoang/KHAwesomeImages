@@ -10,6 +10,7 @@
 
 @protocol KHLoadingOperationProtocol <NSObject>
 
+@required
 - (instancetype)initWithIndexes:(NSIndexSet *)indexes;
 
 - (NSIndexSet *)indexes;
