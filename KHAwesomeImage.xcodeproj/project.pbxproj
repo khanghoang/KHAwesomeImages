@@ -10,6 +10,8 @@
 		ABACC1146976322FAA0189A2 /* libPods-KHAwesomeImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BA3E7E96EC95855D524BFE /* libPods-KHAwesomeImage.a */; };
 		B44CFD9619E9237B00DFDC6C /* KHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44CFD9519E9237B00DFDC6C /* KHMainViewController.m */; };
 		B44CFD9819E9260700DFDC6C /* Popular.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44CFD9719E9260700DFDC6C /* Popular.storyboard */; };
+		B452A44219E97729007F858A /* FreshToday.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B452A44119E97729007F858A /* FreshToday.storyboard */; };
+		B452A44519E97764007F858A /* KHFreshTodayImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B452A44419E97764007F858A /* KHFreshTodayImagesViewController.m */; };
 		B45D6F0019E501E900BDB1F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B45D6EFF19E501E900BDB1F8 /* main.m */; };
 		B45D6F0319E501E900BDB1F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B45D6F0219E501E900BDB1F8 /* AppDelegate.m */; };
 		B45D6F0619E501E900BDB1F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B45D6F0519E501E900BDB1F8 /* ViewController.m */; };
@@ -55,6 +57,9 @@
 		B44CFD9419E9237B00DFDC6C /* KHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMainViewController.h; sourceTree = "<group>"; };
 		B44CFD9519E9237B00DFDC6C /* KHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMainViewController.m; sourceTree = "<group>"; };
 		B44CFD9719E9260700DFDC6C /* Popular.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Popular.storyboard; sourceTree = "<group>"; };
+		B452A44119E97729007F858A /* FreshToday.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FreshToday.storyboard; sourceTree = "<group>"; };
+		B452A44319E97764007F858A /* KHFreshTodayImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreshTodayImagesViewController.h; sourceTree = "<group>"; };
+		B452A44419E97764007F858A /* KHFreshTodayImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHFreshTodayImagesViewController.m; sourceTree = "<group>"; };
 		B45D6EFA19E501E900BDB1F8 /* KHAwesomeImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KHAwesomeImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45D6EFE19E501E900BDB1F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B45D6EFF19E501E900BDB1F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -201,6 +206,9 @@
 				B44CFD9519E9237B00DFDC6C /* KHMainViewController.m */,
 				B45D6F0719E501E900BDB1F8 /* Main.storyboard */,
 				B44CFD9719E9260700DFDC6C /* Popular.storyboard */,
+				B452A44319E97764007F858A /* KHFreshTodayImagesViewController.h */,
+				B452A44419E97764007F858A /* KHFreshTodayImagesViewController.m */,
+				B452A44119E97729007F858A /* FreshToday.storyboard */,
 				B45D6F0A19E501E900BDB1F8 /* Images.xcassets */,
 				B45D6F0C19E501E900BDB1F8 /* LaunchScreen.xib */,
 				B45D6EFD19E501E900BDB1F8 /* Supporting Files */,
@@ -411,6 +419,7 @@
 				B45D6F0919E501E900BDB1F8 /* Main.storyboard in Resources */,
 				B4BB5E9319E7949800910164 /* KHLoadingContentTableViewCell.xib in Resources */,
 				B4BB5EA019E7A51B00910164 /* KHLoadingContentErrorTableViewCell.xib in Resources */,
+				B452A44219E97729007F858A /* FreshToday.storyboard in Resources */,
 				B45D6F0E19E501E900BDB1F8 /* LaunchScreen.xib in Resources */,
 				B44CFD9819E9260700DFDC6C /* Popular.storyboard in Resources */,
 				B45D6F5819E50F0900BDB1F8 /* KHImageTableViewCell.xib in Resources */,
@@ -476,6 +485,7 @@
 				B45D6F0619E501E900BDB1F8 /* ViewController.m in Sources */,
 				B45D6F5E19E50F0900BDB1F8 /* KHBasicSectionModel.m in Sources */,
 				B45D6F5C19E50F0900BDB1F8 /* CellFactory1.m in Sources */,
+				B452A44519E97764007F858A /* KHFreshTodayImagesViewController.m in Sources */,
 				B45D6F0319E501E900BDB1F8 /* AppDelegate.m in Sources */,
 				B45D6F6119E50F0900BDB1F8 /* DataLoadingOperation.m in Sources */,
 				B4BB5E9219E7949800910164 /* KHLoadingContentTableViewCell.m in Sources */,
