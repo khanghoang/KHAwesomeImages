@@ -13,5 +13,6 @@
 - (void)loadContent:(void(^)(NSInteger totalItems, NSError *error, AFHTTPRequestOperation *operation))completeBlock;
 - (void)loadContent;
 
+@property (nonatomic, weak) id<HandleContentLoadingProtocol> delegate;
 
 @end

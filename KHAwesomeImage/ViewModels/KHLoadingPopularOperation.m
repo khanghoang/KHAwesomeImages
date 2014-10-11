@@ -10,6 +10,9 @@
 
 @interface KHLoadingPopularOperation ()
 
+@property (nonatomic, readonly) NSIndexSet *indexes;
+@property (nonatomic, readonly) NSArray *dataPage;
+
 @end
 
 @implementation KHLoadingPopularOperation
