@@ -53,6 +53,7 @@
 }
 
 - (void)dataProvider:(KHOrderedDataProvider *)dataProvider didLoadDataAtPage:(NSUInteger)page withItems:(NSArray *)items error:(NSError *)error {
+
     [self.tableView reloadData];
 }
 

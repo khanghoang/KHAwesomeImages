@@ -38,18 +38,23 @@
 	return self;
 }
 
-- (void)loadData:(void (^)(NSArray *))finishBlock {
+- (void)loadData:(void (^)(NSArray *data, NSError *error))finishBlock {
 	typeof(self) weakSelf = self;
 	[PXRequest authenticateWithUserName:@"hoangtrieukhang" password:@"123#@!MinhKhang" completion: ^(BOOL success) {
 	    if (success) {
 	        [PXRequest requestForPhotoFeature:PXAPIHelperPhotoFeatureFreshWeek resultsPerPage:20 page:weakSelf.page completion: ^(NSDictionary *results, NSError *error) {
 	            weakSelf.dataPage = results[@"photos"];
+
 	            if (finishBlock) {
-	                finishBlock(weakSelf.dataPage);
+	                finishBlock(weakSelf.dataPage, error);
 				}
 			}];
 		}
 	    else {
+	        if (finishBlock) {
+	            NSError *errorWithAuth = [NSError errorWithDomain:NSStringFromClass([self class]) code:101 userInfo:@{ @"description": @"Error with authentication" }];
+                finishBlock(nil, errorWithAuth);
+			}
 		}
 	}];
 }

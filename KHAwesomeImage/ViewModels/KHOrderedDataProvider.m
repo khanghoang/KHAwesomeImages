@@ -78,14 +78,14 @@
     id<KHLoadingOperationProtocol> loadingOperation = [self.delegate loadingOperationForSectionViewModel:self forPage:self.currentPage+1];
     self.loadingOperation = loadingOperation;
     __weak typeof(self) weakSelf = self;
-    [loadingOperation loadData: ^(NSArray *data) {
+    [loadingOperation loadData: ^(NSArray *data, NSError *error) {
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
-            [weakSelf _dataOperation:loadingOperation finishedLoadingForPage:self.currentPage+1];
+            [weakSelf _dataOperation:loadingOperation finishedLoadingForPage:self.currentPage+1 error:error];
         }];
     }];
 }
 
-- (void)_dataOperation:(NSBlockOperation<KHLoadingOperationProtocol> *)operation finishedLoadingForPage:(NSUInteger)page {
+- (void)_dataOperation:(NSBlockOperation<KHLoadingOperationProtocol> *)operation finishedLoadingForPage:(NSUInteger)page error:(NSError *)error{
     self.isLoadingNextPage = NO;
 
     if (operation.dataPage.count == 0) {

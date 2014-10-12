@@ -106,7 +106,7 @@ AWPagedArrayDelegate
     id<KHLoadingOperationProtocol> operation = [self.delegate loadingOperationForSectionViewModel:self indexes:indexes];
     // Remember to not retain self in block since we store the operation
     __weak typeof(self) weakSelf = self;
-    [operation loadData: ^(NSArray *data) {
+    [operation loadData: ^(NSArray *data, NSError *error) {
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
             [weakSelf _dataOperation:operation finishedLoadingForPage:page];
         }];

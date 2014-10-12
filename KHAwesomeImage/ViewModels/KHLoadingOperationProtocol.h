@@ -16,6 +16,6 @@
 - (NSIndexSet *)indexes;
 - (NSArray *)dataPage;
 
-- (void)loadData:(void (^)(NSArray *data))finishBlock;
+- (void)loadData:(void (^)(NSArray *data, NSError *error))finishBlock;
 
 @end
