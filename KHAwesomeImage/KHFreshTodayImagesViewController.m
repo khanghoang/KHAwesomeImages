@@ -72,7 +72,6 @@
 	[self.tableController setModel:self.basicModel];
 
     [dataProvider startLoading];
-	[self.tableView reloadData];
 }
 
 - (id<KHLoadingOperationProtocol>)loadingOperationForSectionViewModel:(id<KHTableViewSectionModel>)viewModel forPage:(NSUInteger)page {
