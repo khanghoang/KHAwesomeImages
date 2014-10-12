@@ -12,10 +12,15 @@
 #import "KHLoadingContentTableViewCell.h"
 #import "KHLoadingContentErrorViewModel.h"
 #import "KHImageTableViewCell.h"
+#import "KHErrorLoadingMoreSectionModel.h"
 
 @implementation KHFreshTodayCellFactory
 - (CGFloat)heightForItemAtIndexpath:(NSIndexPath *)indexpaht model:(id <KHTableViewModel> )model {
     if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadMoreSection class]]) {
+        return 40;
+    }
+
+    if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHErrorLoadingMoreSectionModel class]]) {
         return 40;
     }
 
@@ -36,7 +41,8 @@
         return [self _getReusableCellWithClass:[KHLoadingContentTableViewCell class] tableView:tableView];
     }
 
-    if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHLoadMoreSection class]]) {
+    if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHLoadMoreSection class]] ||
+        [[model sectionAtIndex:indexPath.section] isKindOfClass:[KHErrorLoadingMoreSectionModel class]]) {
         return [self _getReusableCellWithClass:[KHLoadMoreTableViewCell class] tableView:tableView];
     }
 

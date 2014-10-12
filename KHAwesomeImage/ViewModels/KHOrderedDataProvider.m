@@ -88,7 +88,7 @@
 - (void)_dataOperation:(NSBlockOperation<KHLoadingOperationProtocol> *)operation finishedLoadingForPage:(NSUInteger)page error:(NSError *)error{
     self.isLoadingNextPage = NO;
 
-    if (operation.dataPage.count == 0) {
+    if (operation.dataPage.count == 0 && !error) {
         self.isReachMaxPage = YES;
     } else {
         self.currentPage ++;
@@ -96,7 +96,7 @@
 
     [self.arrItems addObjectsFromArray:operation.dataPage];
     if ([self.delegate respondsToSelector:@selector(dataProvider:didLoadDataAtPage:withItems:error:)]) {
-        [self.delegate dataProvider:self didLoadDataAtPage:self.currentPage withItems:operation.dataPage error:nil];
+        [self.delegate dataProvider:self didLoadDataAtPage:self.currentPage withItems:operation.dataPage error:error];
     }
 }
 

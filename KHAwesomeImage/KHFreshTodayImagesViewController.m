@@ -11,6 +11,7 @@
 #import "KHLoadingFreshTodayOperation.h"
 #import "KHFreshTodayCellFactory.h"
 #import "KHOrderedDataProvider.h"
+#import "KHErrorLoadingMoreSectionModel.h"
 
 @interface KHFreshTodayImagesViewController ()
 <
@@ -22,7 +23,7 @@
 @property (strong, nonatomic) TableController *tableController;
 @property (strong, nonatomic) BasicTableViewModel *basicModel;
 @property (strong, nonatomic) LBDelegateMatrioska *chainDelegate;
-@property (strong, nonatomic) id<KHTableViewCellFactoryProtocol> cellFactory;
+@property (strong, nonatomic) id <KHTableViewCellFactoryProtocol> cellFactory;
 
 @end
 
@@ -53,13 +54,19 @@
 }
 
 - (void)dataProvider:(KHOrderedDataProvider *)dataProvider didLoadDataAtPage:(NSUInteger)page withItems:(NSArray *)items error:(NSError *)error {
+	if (error) {
+		BasicTableViewModel *errorLoadingMoreSection = [[BasicTableViewModel alloc] init];
+		errorLoadingMoreSection.sectionModel = [[KHErrorLoadingMoreSectionModel alloc] init];
 
-    [self.tableView reloadData];
+		BasicTableViewModel *imageSection = self.basicModel;
+        [imageSection setViewModel:errorLoadingMoreSection];
+	}
+
+	[self.tableView reloadData];
 }
 
 - (void)didLoadWithResultWithTotalPage:(NSInteger)totalItems error:(NSError *)error operation:(AFHTTPRequestOperation *)operation {
-
-    KHOrderedDataProvider *dataProvider = [[KHOrderedDataProvider alloc] init];
+	KHOrderedDataProvider *dataProvider = [[KHOrderedDataProvider alloc] init];
 	dataProvider.delegate = (id)self;
 
 	BasicTableViewModel *loadingMoreSection = [[BasicTableViewModel alloc] init];
@@ -72,11 +79,11 @@
 
 	[self.tableController setModel:self.basicModel];
 
-    [dataProvider startLoading];
+	[dataProvider startLoading];
 }
 
-- (id<KHLoadingOperationProtocol>)loadingOperationForSectionViewModel:(id<KHTableViewSectionModel>)viewModel forPage:(NSUInteger)page {
-    return [[KHLoadingFreshTodayOperation alloc] initWithPage:page];
+- (id <KHLoadingOperationProtocol> )loadingOperationForSectionViewModel:(id <KHTableViewSectionModel> )viewModel forPage:(NSUInteger)page {
+	return [[KHLoadingFreshTodayOperation alloc] initWithPage:page];
 }
 
 @end

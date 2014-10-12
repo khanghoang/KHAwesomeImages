@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface KHLoadMoreTableViewCell : UITableViewCell
+<
+KHCellProtocol
+>
 
 @end

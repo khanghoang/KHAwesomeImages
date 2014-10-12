@@ -45,4 +45,8 @@
     return [viewSectionModel objectAtIndex:indexPath.row];
 }
 
+- (void)setViewModel:(id<KHTableViewModel>)viewModel {
+    _viewModel = viewModel;
+}
+
 @end

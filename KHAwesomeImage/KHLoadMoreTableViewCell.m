@@ -8,6 +8,12 @@
 
 #import "KHLoadMoreTableViewCell.h"
 
+@interface KHLoadMoreTableViewCell()
+
+@property (weak, nonatomic) IBOutlet UILabel *lblLoading;
+
+@end
+
 @implementation KHLoadMoreTableViewCell
 
 - (void)awakeFromNib {
@@ -18,6 +24,14 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)prepareForReuse {
+    self.lblLoading.text = @"";
+}
+
+- (void)configWithData:(id)data {
+    self.lblLoading.text = [data stringValue];
 }
 
 @end

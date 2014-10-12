@@ -14,9 +14,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3P-9V-m3E">
-                        <rect key="frame" x="81" y="9" width="158" height="21"/>
+                        <rect key="frame" x="0.0" y="10" width="320" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="158" id="vyH-11-pPT"/>
+                            <constraint firstAttribute="width" constant="320" id="vyH-11-pPT"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -25,10 +25,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="centerX" secondItem="q3P-9V-m3E" secondAttribute="centerX" id="dDc-sg-cpN"/>
-                    <constraint firstAttribute="centerY" secondItem="q3P-9V-m3E" secondAttribute="centerY" constant="0.5" id="koh-pj-FDE"/>
+                    <constraint firstAttribute="centerY" secondItem="q3P-9V-m3E" secondAttribute="centerY" constant="-0.5" id="koh-pj-FDE"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="214" y="479"/>
+            <connections>
+                <outlet property="lblLoading" destination="q3P-9V-m3E" id="RpQ-Nd-Wda"/>
+            </connections>
+            <point key="canvasLocation" x="214" y="477"/>
         </tableViewCell>
     </objects>
 </document>

@@ -14,10 +14,6 @@
     return @"";
 }
 
-- (NSArray *)items {
-    return @[@"Load more"];
-}
-
 - (NSUInteger)count {
     return 1;
 }

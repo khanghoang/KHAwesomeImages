@@ -17,6 +17,7 @@ KHTableViewModel
 
 @property (strong, nonatomic) id<KHTableViewSectionModel> sectionModel;
 
+- (void)setViewModel:(id<KHTableViewModel>)viewModel;
 - (instancetype)initWithModel:(id<KHTableViewModel>)viewModel;
 
 @end

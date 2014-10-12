@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ABACC1146976322FAA0189A2 /* libPods-KHAwesomeImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BA3E7E96EC95855D524BFE /* libPods-KHAwesomeImage.a */; };
+		B4013FA319EA6DD600BC53CF /* KHErrorLoadingMoreSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4013FA219EA6DD600BC53CF /* KHErrorLoadingMoreSectionModel.m */; };
 		B44CFD9619E9237B00DFDC6C /* KHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44CFD9519E9237B00DFDC6C /* KHMainViewController.m */; };
 		B44CFD9819E9260700DFDC6C /* Popular.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44CFD9719E9260700DFDC6C /* Popular.storyboard */; };
 		B452A44219E97729007F858A /* FreshToday.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B452A44119E97729007F858A /* FreshToday.storyboard */; };
@@ -58,6 +59,8 @@
 /* Begin PBXFileReference section */
 		64E18B0A4BA00181B98C4D72 /* Pods-KHAwesomeImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KHAwesomeImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-KHAwesomeImage/Pods-KHAwesomeImage.release.xcconfig"; sourceTree = "<group>"; };
 		88BA3E7E96EC95855D524BFE /* libPods-KHAwesomeImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KHAwesomeImage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4013FA119EA6DD600BC53CF /* KHErrorLoadingMoreSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHErrorLoadingMoreSectionModel.h; sourceTree = "<group>"; };
+		B4013FA219EA6DD600BC53CF /* KHErrorLoadingMoreSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHErrorLoadingMoreSectionModel.m; sourceTree = "<group>"; };
 		B44CFD9419E9237B00DFDC6C /* KHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMainViewController.h; sourceTree = "<group>"; };
 		B44CFD9519E9237B00DFDC6C /* KHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMainViewController.m; sourceTree = "<group>"; };
 		B44CFD9719E9260700DFDC6C /* Popular.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Popular.storyboard; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				B45D6F4919E50F0900BDB1F8 /* KHLoadMoreSection.h */,
 				B45D6F4A19E50F0900BDB1F8 /* KHLoadMoreSection.m */,
 				B45D6F4B19E50F0900BDB1F8 /* KHTableViewSectionModel.h */,
+				B4013FA119EA6DD600BC53CF /* KHErrorLoadingMoreSectionModel.h */,
+				B4013FA219EA6DD600BC53CF /* KHErrorLoadingMoreSectionModel.m */,
 			);
 			path = TableViewSectionModel;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4013FA319EA6DD600BC53CF /* KHErrorLoadingMoreSectionModel.m in Sources */,
 				B44CFD9619E9237B00DFDC6C /* KHMainViewController.m in Sources */,
 				B45D6F6219E50F0900BDB1F8 /* DataProvider.m in Sources */,
 				B45D6F6019E50F0900BDB1F8 /* KHLoadMoreSection.m in Sources */,
