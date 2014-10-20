@@ -54,15 +54,32 @@
 }
 
 - (void)dataProvider:(KHOrderedDataProvider *)dataProvider didLoadDataAtPage:(NSUInteger)page withItems:(NSArray *)items error:(NSError *)error {
+	id <KHTableViewModel> tableViewModel;
+
+
 	if (error) {
 		BasicTableViewModel *errorLoadingMoreSection = [[BasicTableViewModel alloc] init];
 		errorLoadingMoreSection.sectionModel = [[KHErrorLoadingMoreSectionModel alloc] init];
-
-		BasicTableViewModel *imageSection = self.basicModel;
-        [imageSection setViewModel:errorLoadingMoreSection];
+        tableViewModel = errorLoadingMoreSection;
+	}
+	else {
+		BasicTableViewModel *loadingMoreSection = [[BasicTableViewModel alloc] init];
+		loadingMoreSection.sectionModel = [[KHLoadMoreSection alloc] init];
+        tableViewModel = loadingMoreSection;
 	}
 
-	[self.tableView reloadData];
+	BasicTableViewModel *imageSection = self.basicModel;
+	[imageSection setViewModel:tableViewModel];
+
+	if (error) {
+		NSUInteger lastSectionIndex = [self.basicModel numberOfSection] - 1;
+		if (lastSectionIndex > 0) {
+			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:lastSectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+		}
+	}
+	else {
+		[self.tableView reloadData];
+	}
 }
 
 - (void)didLoadWithResultWithTotalPage:(NSInteger)totalItems error:(NSError *)error operation:(AFHTTPRequestOperation *)operation {

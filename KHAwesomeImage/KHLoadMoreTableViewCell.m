@@ -31,7 +31,7 @@
 }
 
 - (void)configWithData:(id)data {
-    self.lblLoading.text = [data stringValue];
+    self.lblLoading.text = data;
 }
 
 @end

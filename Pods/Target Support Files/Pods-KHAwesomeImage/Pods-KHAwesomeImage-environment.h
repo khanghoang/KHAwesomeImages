@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_AWPagedArray 2
 #define COCOAPODS_VERSION_PATCH_AWPagedArray 0
 
+// KHTableViewController
+#define COCOAPODS_POD_AVAILABLE_KHTableViewController
+#define COCOAPODS_VERSION_MAJOR_KHTableViewController 0
+#define COCOAPODS_VERSION_MINOR_KHTableViewController 1
+#define COCOAPODS_VERSION_PATCH_KHTableViewController 0
+
 // LBDelegateMatrioska
 #define COCOAPODS_POD_AVAILABLE_LBDelegateMatrioska
 #define COCOAPODS_VERSION_MAJOR_LBDelegateMatrioska 0

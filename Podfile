@@ -2,6 +2,7 @@
 # platform :ios, "6.0"
 
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/khanghoang/MyCocoaPodRepo.git'
 
 target "KHAwesomeImage" do
 
@@ -9,6 +10,7 @@ target "KHAwesomeImage" do
     pod "LBDelegateMatrioska"
     pod "AWPagedArray"
     pod "AFNetworking"
+    pod "KHTableViewController"
 
 end
 

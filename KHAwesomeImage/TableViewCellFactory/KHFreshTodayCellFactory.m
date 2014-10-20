@@ -16,62 +16,64 @@
 
 @implementation KHFreshTodayCellFactory
 - (CGFloat)heightForItemAtIndexpath:(NSIndexPath *)indexpaht model:(id <KHTableViewModel> )model {
-    if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadMoreSection class]]) {
-        return 40;
-    }
+	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadMoreSection class]]) {
+		return 40;
+	}
 
-    if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHErrorLoadingMoreSectionModel class]]) {
-        return 40;
-    }
+	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHErrorLoadingMoreSectionModel class]]) {
+		return 40;
+	}
 
-    if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHContentLoadingFreshTodayViewModel class]]) {
-        return [UIScreen mainScreen].bounds.size.height;
-    }
+	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHContentLoadingFreshTodayViewModel class]]) {
+		return [UIScreen mainScreen].bounds.size.height;
+	}
 
-    if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadingContentErrorViewModel class]]) {
-        return [UIScreen mainScreen].bounds.size.height;
-    }
+	if ([[model sectionAtIndex:indexpaht.section] isKindOfClass:[KHLoadingContentErrorViewModel class]]) {
+		return [UIScreen mainScreen].bounds.size.height;
+	}
 
-    return 320;
+	return 320;
 }
 
 - (UITableViewCell <KHCellProtocol> *)cellAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView model:(id <KHTableViewModel> )model {
+	if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHContentLoadingFreshTodayViewModel class]]) {
+		return [self _getReusableCellWithClass:[KHLoadingContentTableViewCell class] tableView:tableView];
+	}
 
-    if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHContentLoadingFreshTodayViewModel class]]) {
-        return [self _getReusableCellWithClass:[KHLoadingContentTableViewCell class] tableView:tableView];
-    }
+	if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHLoadMoreSection class]] ||
+	    [[model sectionAtIndex:indexPath.section] isKindOfClass:[KHErrorLoadingMoreSectionModel class]]) {
+		id data = [model itemAtIndexpath:indexPath];
+		UITableViewCell <KHCellProtocol> *cell = [self _getReusableCellWithClass:[KHLoadMoreTableViewCell class] tableView:tableView];
+		[cell configWithData:data];
+		return cell;
+	}
 
-    if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHLoadMoreSection class]] ||
-        [[model sectionAtIndex:indexPath.section] isKindOfClass:[KHErrorLoadingMoreSectionModel class]]) {
-        return [self _getReusableCellWithClass:[KHLoadMoreTableViewCell class] tableView:tableView];
-    }
+	if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHLoadingContentErrorViewModel class]]) {
+		return [self _getReusableCellWithClass:[KHLoadingContentErrorTableViewCell class] tableView:tableView];
+	}
 
-    if ([[model sectionAtIndex:indexPath.section] isKindOfClass:[KHLoadingContentErrorViewModel class]]) {
-        return [self _getReusableCellWithClass:[KHLoadingContentErrorTableViewCell class] tableView:tableView];
-    }
+	id data = [model itemAtIndexpath:indexPath];
 
-    id data = [model itemAtIndexpath:indexPath];
-
-    UITableViewCell <KHCellProtocol> *cell = [self _getReusableCellWithClass:[KHImageTableViewCell class] tableView:tableView];
-    [cell configWithData:data];
-    return cell;
+	UITableViewCell <KHCellProtocol> *cell = [self _getReusableCellWithClass:[KHImageTableViewCell class] tableView:tableView];
+	[cell configWithData:data];
+	return cell;
 }
 
 #pragma mark - Private methods
 
 - (UITableViewCell <KHCellProtocol> *)_getReusableCellWithClass:(Class)cellClass tableView:(UITableView *)tableView {
-    [self _registerTheClass:cellClass toTableView:tableView];
-    return [self _dequeueReuseableCellWithClass:cellClass ofTableView:tableView];
+	[self _registerTheClass:cellClass toTableView:tableView];
+	return [self _dequeueReuseableCellWithClass:cellClass ofTableView:tableView];
 }
 
 - (void)_registerTheClass:(Class)cellClass toTableView:(UITableView *)tableView {
-    UINib *cellNib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
-    [tableView registerNib:cellNib forCellReuseIdentifier:NSStringFromClass(cellClass)];
+	UINib *cellNib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
+	[tableView registerNib:cellNib forCellReuseIdentifier:NSStringFromClass(cellClass)];
 }
 
 - (UITableViewCell <KHCellProtocol> *)_dequeueReuseableCellWithClass:(Class)cellClass ofTableView:(UITableView *)tableView {
-    UITableViewCell <KHCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(cellClass)];
-    return cell;
+	UITableViewCell <KHCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(cellClass)];
+	return cell;
 }
 
 @end

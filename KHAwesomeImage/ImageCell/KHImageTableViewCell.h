@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface KHImageTableViewCell : UITableViewCell
-
-- (void)configWithData:(id)data;
+<
+KHCellProtocol
+>
 
 @end

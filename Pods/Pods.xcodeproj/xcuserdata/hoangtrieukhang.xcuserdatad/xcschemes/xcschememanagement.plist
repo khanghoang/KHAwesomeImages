@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-KHAwesomeImage-KHTableViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-KHAwesomeImage-LBDelegateMatrioska.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0EBA01E49DFA2DC9C6926C55</key>
+		<key>35DEC1B794F6B4BFD7B36973</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1398CF416E5D1B39C355AA2E</key>
+		<key>5A6C0BC3CF93ABBE5DD46250</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>389C87B7FA7F44A88C2651C9</key>
+		<key>759F9FA42D6F0D4C7C497ADF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7FB15D344022764DA7F8204</key>
+		<key>C7B10E5EEA54FA353FF0B7B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D73FDB657B8243A670517431</key>
+		<key>FA7D5FA8D3748CC4FB4742CF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC9CC2D4B4CB7EC6A7982154</key>
 		<dict>
 			<key>primary</key>
 			<true/>
